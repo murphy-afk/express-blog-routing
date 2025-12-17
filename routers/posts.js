@@ -17,9 +17,14 @@ router.get('/', (req, res) => {
 // SINGLE POST (SHOW)
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const post = posts.find((post) => post.id === id);
-  const result = post !== undefined ? post : 'no post found';
-  res.json(result);
+  if (isNaN(id)) {
+    res.json('invalid id')
+  }
+  else {
+    const post = posts.find((post) => post.id === id);
+    const result = post !== undefined ? post : 'no post found';
+    res.json(result);
+  }
 })
 
 // CREATE
