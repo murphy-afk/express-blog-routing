@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
-  res.json(post);
+  const result = post !== undefined ? post : 'no post found';
+  res.json(result);
 })
 
 // CREATE
@@ -40,7 +41,5 @@ router.patch('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   res.send('delete existing post')
 })
-
-
 
 export default router
