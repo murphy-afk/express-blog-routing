@@ -16,7 +16,9 @@ router.get('/', (req, res) => {
 
 // SINGLE POST (SHOW)
 router.get('/:id', (req, res) => {
-  res.send('single post route')
+  const id = parseInt(req.params.id);
+  const post = posts.find((post) => post.id === id);
+  res.json(post);
 })
 
 // CREATE
